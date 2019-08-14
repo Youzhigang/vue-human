@@ -39,10 +39,7 @@
       },
       type: {
         type: String,
-        default: 'text',
-        validator: val => {
-          return ['text', 'password'].includes(val)
-        }
+        default: 'text'
       },
       placeholder: {
         type: String

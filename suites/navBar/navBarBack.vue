@@ -16,9 +16,9 @@
     },
     props: {
       icon: {
-        type: Object,
+        type: [Object, String],
         default: () => {
-          return require('vue-human-icons/js/ios/arrow-back')
+          return require('vue-human-icons/js/ios/arrow-back').default
         }
       },
       simple: Boolean

@@ -12,13 +12,18 @@
             vertical="-3px"></mn-icon>
         </div>
         <div class="mn-message-type">
-          {{ title || currentType.text }}
+          <template v-if="simple">
+            {{ title || message }}
+          </template>
+          <template v-else>
+            {{ title || currentType.text }}
+          </template>
         </div>
         <div class="mn-message-close" @click.prevent="hide">
           <mn-icon :name="closeIcon"></mn-icon>
         </div>
       </div>
-      <div class="mn-message-contents">
+      <div class="mn-message-contents" v-if="!simple">
         {{ message }}
       </div>
     </div>
@@ -52,7 +57,10 @@
       /**
        * 消息框的标题
        */
-      title: String,
+      title: {
+        type: String,
+        default: ''
+      },
 
       /**
        * 消息框的主体消息
@@ -104,6 +112,14 @@
       }
     },
     computed: {
+      /**
+       * 是否显示为Simple样式
+       */
+      simple () {
+        const { title, message } = this
+        if (message.length > 0 && this.message.length <= 18 && title.length === 0) return true
+        if (title.length > 0 && this.message.length > 0) return false
+      },
       /**
        * 计算出当前的类型名称
        * @method currentType
@@ -171,7 +187,7 @@
   .mn-message-action {
     display: flex;
     padding: 0.5rem;
-    padding-bottom: 0;
+    // padding-bottom: 0;
     align-items: center;
   }
 
@@ -189,7 +205,8 @@
   }
 
   .mn-message-contents {
-    padding: 0.25rem 0.6rem 0.5rem 0.6rem;
+    padding: 0rem 0.6rem 0.5rem 0.6rem;
     font-size: 0.875rem;
+    margin-top: -.5rem;
   }
 </style>

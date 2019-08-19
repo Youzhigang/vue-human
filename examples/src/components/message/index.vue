@@ -14,6 +14,14 @@
             </mn-btn>
           </mn-card-suffix>
         </mn-card-item>
+        <mn-card-item>
+          <mn-card-body>Message</mn-card-body>
+          <mn-card-suffix action>
+            <mn-btn theme="primary" @click="onOpenMessage2" size="sm">
+              Open message
+            </mn-btn>
+          </mn-card-suffix>
+        </mn-card-item>
       </mn-card>
       <mn-section-note>
         可以有多种不同类型的 Message: success, warning, error。
@@ -33,7 +41,10 @@
     },
     methods: {
       onOpenMessage () {
-        this.messageLayer = Message.create().show()
+        this.messageLayer = Message.create({ duration: 3000, title: '666', message: '过过过过过过过过过过过过过过过过过过' }).show()
+      },
+      onOpenMessage2 () {
+        this.messageLayer = Message.create({ duration: 3000, message: '过过过过过过过过过过过过过过过过过过过过过过过过过过过过过过过过过过过过' }).show()
       }
     },
     beforeDestroy () {

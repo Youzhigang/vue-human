@@ -61,12 +61,12 @@
         if (this.startPageX > 16) {
           // 上面露底
           if (pageY > this.startPageY && scrollTop <= 0) {
-            event.preventDefault()
+            event.cancelable && event.preventDefault()
           }
 
           // 下面露底
           if (pageY < this.startPageY && scrollTop >= scrollHeight - containerHeight) {
-            event.preventDefault()
+            event.cancelable && event.preventDefault()
           }
         }
         this.$emit('touchmove', event, this)

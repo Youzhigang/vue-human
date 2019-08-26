@@ -1,6 +1,9 @@
 ## 2.9.0
 
-* 【更新】删除针对原 humans 的 inject 方法的兼容。
+* 【更新】fix(scroller.vue): fix touchmove warning, cancelable;
+* 【更新】feat(message.vue): add simple show style
+* 【更新】fix(input.vue): fix type validate
+* 【更新】fix(navBarBack.vue): fix props type
 
 ## 2.8.4
 

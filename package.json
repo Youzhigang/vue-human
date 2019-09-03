@@ -29,7 +29,8 @@
     "example": "node examples/build/build.js",
     "test": "karma start test/unit/karma.conf.js --single-run",
     "test:unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
-    "docs": "jsdoc -r -c ./docs/jsdoc.json"
+    "docs": "jsdoc -r -c ./docs/jsdoc.json",
+    "deploy": "npm publish --registry=http://npm.suiyi.com.cn"
   },
   "publishConfig": {
     "access": "public"
@@ -104,6 +105,7 @@
     "sinon": "^2.3.2",
     "sinon-chai": "^2.10.0",
     "url-loader": "^0.5.8",
+    "vue": "2.3.4",
     "vue-loader": "^12.2.1",
     "vue-router": "^2.5.3",
     "vue-style-loader": "^3.0.1",

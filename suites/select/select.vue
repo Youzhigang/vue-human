@@ -32,9 +32,6 @@
         type: String
       }
     },
-    mounted () {
-      console.log(this)
-    },
     computed: {
       computedValue () {
         let options = this.options.filter(item => item[this.optionValueProp] === this.value)

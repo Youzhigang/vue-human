@@ -5,8 +5,8 @@
     @input="onInput">
     <option
       :value="index"
-      :alt="option.value"
-      v-for="(option, index) in options">{{ option.label }}</option>
+      :alt="option[optionValueProp]"
+      v-for="(option, index) in options">{{ option[optionLabelProp] }}</option>
   </select>
 </template>
 
@@ -22,11 +22,22 @@
         default: () => {
           return []
         }
+      },
+      optionLabelProp: {
+        default: 'label',
+        type: String
+      },
+      optionValueProp: {
+        default: 'value',
+        type: String
       }
+    },
+    mounted () {
+      console.log(this)
     },
     computed: {
       computedValue () {
-        let options = this.options.filter(item => item.value === this.value)
+        let options = this.options.filter(item => item[this.optionValueProp] === this.value)
 
         if (options.length > 0) {
           return this.options.indexOf(options[0])
@@ -38,7 +49,7 @@
     },
     methods: {
       onInput (event) {
-        let value = this.options[parseInt(event.target.value)].value
+        let value = this.options[parseInt(event.target.value)][this.optionValueProp]
         this.$emit('input', value)
       }
     }

@@ -12,6 +12,11 @@
       <!-- radio item -->
       <mn-section>
         <mn-section-note>Choose your city</mn-section-note>
+        <mn-section-note>
+          <pre>
+            传入的options 格式: [{label: String, value: any}]
+          </pre>
+        </mn-section-note>
         <mn-card>
           <mn-card-item type="link">
             <mn-card-prefix>
@@ -38,6 +43,34 @@
         </mn-section-btn>
       </mn-section>
     </mn-form>
+      <mn-section>
+        <mn-section-note>更改显示label/value, 通过optionLabelProp/optionValueProp</mn-section-note>
+        <mn-section-note>
+          <pre v-pre>
+            传入的options 格式: [{showName: String, emitValue: any}]
+            optionLabelProp="showName"
+            optionValueProp="emitValue"
+          </pre>
+        </mn-section-note>
+        <mn-card>
+          <mn-card-item type="link">
+            <mn-card-prefix>
+              <mn-label >City2</mn-label>
+            </mn-card-prefix>
+            <mn-card-body>
+              <mn-select :options="cityOptions2"
+                optionValueProp="emitValue"
+                optionLabelProp="showName"
+               v-model="models.city2"></mn-select>
+            </mn-card-body>
+          </mn-card-item>
+        </mn-card>
+        <mn-section-note>
+          <div>
+            {{ models.city2 }}
+          </div>
+        </mn-section-note>
+      </mn-section>
   </page>
 </template>
 
@@ -58,13 +91,21 @@
     data () {
       return {
         models: {
-          city: undefined
+          city: 'Suzhou',
+          city2: undefined
         },
         cityOptions: [
           { label: 'Choose your city', value: undefined },
           { label: 'Shanghai', value: 'Shanghai' },
           { label: 'Suzhou', value: 'Suzhou' },
           { label: 'Hangzhou', value: 'Hangzhou' }
+        ],
+        cityOptions2: [
+          { showName: '选择城市', emitValue: undefined },
+          { showName: '上海', emitValue: 'Shanghai City' },
+          { showName: '苏州', emitValue: 'Suzhou City' },
+          { showName: '无锡', emitValue: 'Hangzhou City' },
+          { showName: '华东地区', emitValue: ['苏州', '上海', '无锡'] }
         ]
       }
     },
@@ -75,11 +116,12 @@
         setTimeout(() => {
           Message.create({
             type: 'primary',
-            message: 'Success to validate.'
+            // title: 'Success',
+            message: 'Success validate.'
           }).show()
           form.loading = false
           this.$refs.submit.loading = false
-        }, 5000)
+        }, 1000)
       },
       onOpenTip () {
         Message.create({

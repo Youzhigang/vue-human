@@ -26,7 +26,7 @@
     "start": "node examples/build/dev-server.js",
     "dev": "node examples/build/dev-server.js",
     "lint": "eslint --ext .js,.vue components util examples locale",
-    "example": "node examples/build/build.js",
+    "example": "npx vuepress dev vuepress",
     "test": "karma start test/unit/karma.conf.js --single-run",
     "test:unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
     "docs": "jsdoc -r -c ./docs/jsdoc.json",

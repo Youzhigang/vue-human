@@ -9,6 +9,7 @@ const components = fs.readdirSync(expSrcCmpDir)
 const targetDir = path.resolve(__dirname, 'vuepress/.vuepress')
 const targetPageDir = path.resolve(__dirname, 'vuepress/pages')
 const targetCmpsDir = path.join(targetDir, 'components')
+
 console.log(expSrcCmpDir)
 // console.log(components)
 console.log(targetCmpsDir)
@@ -21,13 +22,13 @@ config.themeConfig.sidebar = [
   ['/pages/_button', 'button'],
   '/pages/_actionsheet'
 ]
+const Prefix = 'Mn'
 function copyFile (components, fromDir, toDir, targetPageDir, dryRun = true) {
   for (let index = 0; index < components.length; index++) {
     const componentName = components[index]
     const componentDir = path.join(fromDir, componentName)
     // console.log(componentDir)
     const existFiles = fs.readdirSync(componentDir)
-    const Prefix = 'Mn'
     const normalizeName = Prefix + componentName.substring(0, 1).toUpperCase() + componentName.substring(1)
     // console.log(existFiles)
     if (existFiles.length > 1 || existFiles[0] !== 'index.vue') {
@@ -49,25 +50,38 @@ function copyFile (components, fromDir, toDir, targetPageDir, dryRun = true) {
       config.themeConfig.sidebar.push([`/pages/${normalizeName}`, componentName])
     }
   }
-  // const fromFiles = fs.
 }
 
-copyFile(components, expSrcCmpDir, targetCmpsDir, targetPageDir, false)
+copyFile(components, expSrcCmpDir, targetCmpsDir, targetPageDir, true)
 
-function updateConfig () {
-  // fs.writeFileSync(path.join(targetDir, 'config.js'), )
+function updateConfig (dryRun = true) {
   const configFilePath = path.join(targetDir, 'config.js')
-  // const buf = fs.readFileSync(configFilePath)
-  // console.log(buf.toString())
-  fs.writeFileSync(configFilePath, 'module.exports = ' + JSON.stringify(config))
+  if (!dryRun) {
+    fs.writeFileSync(configFilePath, 'module.exports = ' + JSON.stringify(config))
+  }
 }
-// const test = 'lorem'
-// const dir = 'vuepress'
-updateConfig()
-// exec(`echo ${test} >> ${dir}/a.file`)
-// console.log(config)
-// fs.readFile(path.join(targetDir, 'config.js'), (err, data) => {
-//   console.log(data.toString())
-// })
 
-// fs.w
+updateConfig()
+
+const pressPagesDir = path.resolve(__dirname, 'vuepress/pages')
+
+function appendCodeToPage (from, to, dryRun = true) {
+  const components = fs.readdirSync(from)
+  for (let index = 0; index < components.length; index++) {
+    const componentName = components[index]
+    if (componentName.includes(Prefix)) {
+      const pressPagePath = path.join(pressPagesDir, `${componentName.replace('vue', '')}md`)
+      console.log(pressPagePath)
+      const componentPath = path.join(from, componentName)
+      if (fs.existsSync(pressPagePath)) {
+        const codeBuffer = fs.readFileSync(componentPath)
+        if (!dryRun) {
+          fs.appendFileSync(pressPagePath, '\r\n' + '```javascript\r\n' + codeBuffer + '\r\n' + '```')
+        }
+        console.log(`copy code \r\n from: ${componentPath} \r\nto: ${pressPagePath}`)
+      }
+    }
+  }
+}
+
+appendCodeToPage(targetCmpsDir, pressPagesDir, false)

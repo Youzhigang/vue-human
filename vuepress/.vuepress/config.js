@@ -52,8 +52,8 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        '@': '/Users/it001684/workspace/humans/vuepress/src',
-        'vue-human': '/Users/it001684/workspace/humans/'
+        '@': require('path').join(__dirname, '..', 'src'),
+        'vue-human': require('path').join(__dirname, '..', '../')
       }
     }
   }

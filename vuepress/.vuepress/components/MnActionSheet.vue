@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <page> -->
+    <page>
       <mn-letter>
         <mn-letter-body><h1>Action Sheet</h1></mn-letter-body>
       </mn-letter>
@@ -14,7 +14,7 @@
           </mn-card-item>
         </mn-card>
       </mn-section>
-    <!-- </page> -->
+    </page>
 
     <mn-action-sheet :visible.sync="showActionSheet">
       <mn-card rounded>

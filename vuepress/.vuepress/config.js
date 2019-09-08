@@ -45,7 +45,7 @@ module.exports = {
     ],
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Components', link: '/components/' },
+      { text: 'Components', link: '/pages/MnButton' },
       { text: 'Vue', link: 'https://cn.vuejs.org/v2/guide/' }
     ]
   },

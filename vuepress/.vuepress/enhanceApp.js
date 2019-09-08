@@ -11,4 +11,5 @@ export default (({
   // console.log(Vue)
   Vue.use(human)
   Vue.use(core)
+  console.log(router)
 })

@@ -11,7 +11,7 @@
         <mn-card>
           <mn-card-media>
             <mn-carousel ref="carousel">
-              <mn-carousel-item v-for="item in pictures" :key="item">
+              <mn-carousel-item v-for="(item, index) in pictures" :key="index">
                 <img :src="item.src" style="width: 100%; display: block;">
               </mn-carousel-item>
             </mn-carousel>
@@ -21,7 +21,7 @@
         <mn-card>
           <mn-card-item>
             <mn-card-body>
-              <h5>循环播放</h5>
+              <h5>自动循环播放</h5>
             </mn-card-body>
             <mn-card-prefix>
               <mn-turn :data="true" v-model="models.autoplay" @input="onAutoplay"></mn-turn>
@@ -45,10 +45,10 @@
     data () {
       return {
         models: {
-          autoplay: false
+          autoplay: true
         },
         pictures: [
-          { src: 'https://ois1yok9v.qnssl.com/home-banner-1.jpg' }
+          { src: 'https://via.placeholder.com/250x150/0000FF/ffffff' }
         ]
       }
     },
@@ -61,11 +61,12 @@
       setTimeout(() => {
         // 异步修改图片数量，修改后重新设定 length
         this.pictures = [
-          { src: 'https://ois1yok9v.qnssl.com/home-banner-1.jpg' },
-          { src: 'https://ois1yok9v.qnssl.com/home-banner-2.jpg' },
-          { src: 'https://ois1yok9v.qnssl.com/home-banner-3.jpg' }
+          { src: 'https://via.placeholder.com/250x150/0000FF/ffffff' },
+          { src: 'https://via.placeholder.com/250x150/00FF00/ffffff' },
+          { src: 'https://via.placeholder.com/250x150/FF00FF/ffffff' },
+          { src: 'https://via.placeholder.com/250x150/ff0000/ffffff' }
         ]
-        this.$refs.carousel.length = 3
+        this.$refs.carousel.length = 4
       }, 2000)
     }
   }

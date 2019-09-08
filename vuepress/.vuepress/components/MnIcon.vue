@@ -7,27 +7,6 @@
         </mn-letter-body>
       </mn-letter>
     </mn-section>
-
-    <mn-section>
-      <mn-card>
-        <mn-card-item>
-          <mn-card-body>
-            <img src="https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=&w=24&h=24" alt="" width="24px" height="24px" style="vertical-align: bottom;"> image 24px
-          </mn-card-body>
-        </mn-card-item>
-        <mn-card-item>
-          <mn-card-body>
-            <img src="https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=&w=24&h=24" alt="" width="24px" height="24px" style="vertical-align: bottom;"> <small>image 16px</small>
-          </mn-card-body>
-        </mn-card-item>
-        <mn-card-item>
-          <mn-card-body style="line-height: 40px; font-size: 20px;">
-            <img src="https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=&w=40&h=40" alt="" width="40px" height="40px" style="vertical-align: bottom;"> image 16px
-          </mn-card-body>
-        </mn-card-item>
-      </mn-card>
-    </mn-section>
-
     <mn-section>
       <mn-card>
         <mn-card-item>

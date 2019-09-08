@@ -22,7 +22,7 @@ module.exports = {
       ['/pages/MnCounter', 'counter'],
       ['/pages/MnDatetime', 'datetime'],
       ['/pages/MnForm', 'form'],
-      ['/pages/MnHome', 'home'],
+      // ['/pages/MnHome', 'home'],
       ['/pages/MnIcon', 'icon'],
       ['/pages/MnImage', 'image'],
       ['/pages/MnInput', 'input'],
